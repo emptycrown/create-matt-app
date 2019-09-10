@@ -28,6 +28,7 @@ function start() {
   app.use(bodyParser.json());
 
   // Serve static assets
+  app.use('/dist', express.static(path.join(webPath, 'dist')));
   app.use('/public', express.static(path.join(webPath, 'public')));
   app.use('/static', express.static(path.join(rootPath, 'static')));
   app.use(

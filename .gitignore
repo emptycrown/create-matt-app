@@ -1,5 +1,6 @@
 node_modules/
 .yarn/
+web/dist/
 
 # General
 .DS_Store

@@ -3,7 +3,7 @@ import fs from 'fs';
 import mustache from 'mustache';
 import path from 'path';
 
-const indexPath = path.join(__dirname, '..', 'web', 'public', '_index.html');
+const indexPath = path.join(__dirname, '..', 'web', 'dist', '_index.html');
 const readFileAsync = bluebird.promisify(fs.readFile);
 
 const DEFAULT = {
