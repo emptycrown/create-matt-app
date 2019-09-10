@@ -2,8 +2,7 @@
   "name": "web",
   "version": "1.0.0",
   "scripts": {
-    "dev": "yarn webpack-dev",
-    "webpack-dev": "webpack --config webpack/dev.config.js"
+    "dev": "yarn webpack --config webpack/dev.config.js"
   },
   "dependencies": {
     "@babel/preset-react": "^7.0.0",

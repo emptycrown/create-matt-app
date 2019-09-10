@@ -7,10 +7,9 @@ const R = require('ramda');
 
 const root = path.resolve(__dirname, '..', '..');
 const webPath = path.resolve(root, 'web');
-const publicPath = path.resolve(webPath, 'public');
 const distPath = path.resolve(webPath, 'dist');
 const themeVariables = lessToJs(
-  fs.readFileSync(path.join(publicPath, 'css', 'antd-theme.less'), 'utf8')
+  fs.readFileSync(path.join(webPath, 'styles', 'antd-theme.less'), 'utf8')
 );
 
 module.exports = {
@@ -73,8 +72,8 @@ module.exports = {
       PLATFORM: 'web',
     }),
     new HtmlWebpackPlugin({
-      filename: '../dist/_index.html',
-      template: path.resolve(publicPath, 'index.ejs'),
+      filename: path.relative(__dirname, path.resolve(distPath, '_index.html')),
+      template: path.resolve(webPath, 'index.ejs'),
       templateParameters: {
         ...R.pick(
           [
