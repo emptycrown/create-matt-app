@@ -8,6 +8,7 @@ import favicon from 'serve-favicon';
 import helmet from 'helmet';
 import path from 'path';
 import rateLimit from 'express-rate-limit';
+import serveIndexWithMetatags from './metatags';
 
 const rootPath = path.join(__dirname, '..');
 const webPath = path.join(rootPath, 'web');
@@ -38,6 +39,7 @@ function start() {
       )
     )
   );
+  serveIndexWithMetatags(app);
 
   const server = createServer(app);
   server.listen(PORT, () => {
