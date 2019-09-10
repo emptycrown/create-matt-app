@@ -1,0 +1,9 @@
+{
+  "name": "create-matt-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:matthewhuang97/create-matt-app.git",
+  "author": "Matthew Huang <matthewhuang@college.harvard.edu>",
+  "license": "MIT",
+  "private": false
+}
