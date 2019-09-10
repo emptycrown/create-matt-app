@@ -2,8 +2,45 @@
   "name": "create-matt-app",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:matthewhuang97/create-matt-app.git",
-  "author": "Matthew Huang <matthewhuang@college.harvard.edu>",
   "license": "MIT",
-  "private": false
+  "private": true,
+  "workspaces": [
+    "server",
+    "web"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --single-quote --trailing-comma=es5 --write",
+      "eslint --fix --max-warnings=0 --ignore-pattern '!.eslintrc.js'",
+      "git add"
+    ]
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.3.0",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^2.0.1",
+    "eslint-plugin-sort-imports-es6-autofix": "^0.5.0",
+    "husky": "^3.0.5",
+    "lint-staged": "^9.2.5",
+    "prettier": "^1.18.2"
+  },
+  "dependencies": {
+    "@babel/plugin-proposal-decorators": "^7.6.0",
+    "@babel/plugin-proposal-optional-chaining": "^7.6.0",
+    "@babel/polyfill": "^7.6.0",
+    "@babel/register": "^7.6.0",
+    "dinero.js": "^1.6.0",
+    "graphql": "^14.5.4",
+    "lodash": "^4.17.15",
+    "moment": "^2.24.0",
+    "moment-timezone": "^0.5.26",
+    "ramda": "^0.26.1"
+  }
 }
