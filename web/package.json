@@ -5,8 +5,13 @@
     "dev": "yarn webpack --config webpack/dev.config.js"
   },
   "dependencies": {
+    "@apollo/react-hooks": "^3.1.0",
     "@babel/preset-react": "^7.0.0",
     "antd": "^3.23.2",
+    "apollo-cache-inmemory": "^1.6.3",
+    "apollo-client": "^2.6.4",
+    "apollo-link-error": "^1.1.12",
+    "apollo-link-http": "^1.5.16",
     "autoprefixer": "^9.6.1",
     "babel-loader": "^8.0.6",
     "babel-plugin-import": "^1.12.1",
