@@ -1,6 +1,7 @@
 import { ENV, PROD } from '#/lib/url';
 import { PORT, ROOT_URL } from '#/lib/url';
 import { createServer } from 'http';
+import { initializeGraphQL } from '~/graphql';
 import bodyParser from 'body-parser';
 import compression from 'compression';
 import express from 'express';
@@ -39,6 +40,7 @@ function start() {
       )
     )
   );
+  initializeGraphQL(app);
   serveIndexWithMetatags(app);
 
   const server = createServer(app);
