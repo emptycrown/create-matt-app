@@ -1,7 +1,10 @@
 import React from 'react';
 
-import { signupOrLogin } from '~/lib/auth';
+import { useSignupOrLogin } from '~/lib/auth';
 
 export default function SignupPage() {
-  return <button onClick={() => signupOrLogin('GOOGLE')}>Signup here</button>;
+  const signupOrLogin = useSignupOrLogin();
+  return (
+    <button onClick={() => signupOrLogin('GOOGLE')}>Signup with Google</button>
+  );
 }

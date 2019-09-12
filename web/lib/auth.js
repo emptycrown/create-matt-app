@@ -1,6 +1,16 @@
 import { message } from 'antd';
 import { useEffect } from 'react';
+import { useMutation } from '@apollo/react-hooks';
 import firebase, { initialize } from '~/integrations/firebase';
+import gql from 'graphql-tag';
+
+export const LOGIN = gql`
+  mutation Login($token: String!) {
+    login(token: $token) {
+      id
+    }
+  }
+`;
 
 // TODO: add appropriate providers
 const PROVIDERS = {
@@ -29,19 +39,28 @@ async function handleAccountExistsWithDifferentCredential(email) {
   );
 }
 
-export async function signupOrLogin(provider) {
-  try {
-    await firebase.auth().signInWithPopup(PROVIDERS[provider]());
-  } catch (err) {
-    if (err.code === 'auth/account-exists-with-different-credential') {
-      handleAccountExistsWithDifferentCredential(err.email);
-      return;
-    } else {
-      throw err;
-    }
-  }
+export function useSignupOrLogin() {
+  const [loginMutation] = useMutation(LOGIN);
 
-  await firebase.auth().currentUser.getIdToken();
+  return async function signupOrLogin(provider) {
+    try {
+      await firebase.auth().signInWithPopup(PROVIDERS[provider]());
+    } catch (err) {
+      if (err.code === 'auth/account-exists-with-different-credential') {
+        handleAccountExistsWithDifferentCredential(err.email);
+        return;
+      } else {
+        throw err;
+      }
+    }
+
+    const token = await firebase.auth().currentUser.getIdToken();
+    await loginMutation({
+      variables: { token },
+      refetchQueries: ['Me'],
+      awaitRefetchQueries: true,
+    });
+  };
 }
 
 export async function logout() {
