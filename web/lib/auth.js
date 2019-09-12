@@ -25,6 +25,12 @@ export const LOGIN = gql`
   }
 `;
 
+export const LOGOUT = gql`
+  mutation Logout {
+    logout
+  }
+`;
+
 // TODO: add appropriate providers
 const PROVIDERS = {
   GOOGLE: () => new firebase.auth.GoogleAuthProvider(),
@@ -76,7 +82,11 @@ export function useSignupOrLogin() {
   };
 }
 
-export async function logout() {
-  await firebase.auth().signOut();
-  location.reload();
+export function useLogout() {
+  const [logoutMutation] = useMutation(LOGOUT);
+
+  return async function logout() {
+    await firebase.auth().signOut();
+    await logoutMutation({ refetchQueries: ['Me'], awaitRefetchQueries: true });
+  };
 }
