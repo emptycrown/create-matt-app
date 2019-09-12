@@ -1,4 +1,5 @@
 import connectSequelize from 'connect-session-sequelize';
+import firebase from '~/integrations/firebase';
 import models from '~/models';
 import session from 'express-session';
 const SequelizeStore = connectSequelize(session.Store);
@@ -31,14 +32,24 @@ export function authorizeApp(app) {
   });
 }
 
-export async function login(req) {
-  // TODO: insert authorization logic
-  // Call loginSession(req, uid) at the end
+export async function login(req, token) {
+  const { uid, email, name } = await firebase.auth().verifyIdToken(token);
+
+  // Currently, you can "login" as a brand new user. In this case, we need to
+  // "signup" the user -- i.e. create the user object
+  const [user] = await models.User.findOrCreate({
+    where: { id: uid },
+    defaults: { name, email },
+  });
+
+  loginSession(req, user.id);
+  return user;
 }
 
 // These two functions modify the req.session object, and thus cause
 // express-session to save the cookies
 export function loginSession(req, uid) {
+  console.log('req', req);
   req.session.uid = uid;
 }
 export function logoutSession(req) {

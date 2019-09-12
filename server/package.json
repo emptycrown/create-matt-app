@@ -17,6 +17,7 @@
     "express": "^4.17.1",
     "express-rate-limit": "^5.0.0",
     "express-session": "^1.16.2",
+    "firebase-admin": "^8.5.0",
     "graphql": "^14.5.4",
     "graphql-tools": "^4.0.5",
     "graphql-type-json": "^0.3.0",

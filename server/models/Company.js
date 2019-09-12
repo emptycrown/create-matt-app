@@ -9,7 +9,7 @@ export default class Company extends Sequelize.Model {
     },
     // User id of the company CEO
     ceoId: {
-      type: Sequelize.UUID,
+      type: Sequelize.STRING,
       allowNull: true,
     },
     url: {
