@@ -1,5 +1,6 @@
 import { ENV, PROD } from '#/lib/url';
 import { PORT, ROOT_URL } from '#/lib/url';
+import { authorizeApp } from '~/lib/auth';
 import { createServer } from 'http';
 import { initializeGraphQL } from '~/graphql';
 import bodyParser from 'body-parser';
@@ -28,6 +29,7 @@ function start() {
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
 
+  authorizeApp(app);
   // Serve static assets
   app.use('/dist', express.static(path.join(webPath, 'dist')));
   app.use('/static', express.static(path.join(rootPath, 'static')));

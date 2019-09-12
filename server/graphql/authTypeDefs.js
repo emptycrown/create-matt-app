@@ -6,7 +6,7 @@ export const typeDefs = gql`
   }
 
   extend type Mutation {
-    login(token: String!, extraInfo: JSON): User!
+    login(token: String!): User!
 
     logout: Boolean
   }
