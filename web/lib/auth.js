@@ -1,8 +1,21 @@
 import { message } from 'antd';
 import { useEffect } from 'react';
-import { useMutation } from '@apollo/react-hooks';
+import { useMutation, useQuery } from '@apollo/react-hooks';
 import firebase, { initialize } from '~/integrations/firebase';
 import gql from 'graphql-tag';
+
+export const ME = gql`
+  query Me {
+    me {
+      id
+    }
+  }
+`;
+
+export function useMe(options) {
+  const { data, ...rest } = useQuery(ME, options);
+  return { me: data?.me, ...rest };
+}
 
 export const LOGIN = gql`
   mutation Login($token: String!) {
