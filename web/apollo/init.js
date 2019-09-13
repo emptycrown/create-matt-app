@@ -5,6 +5,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { message } from 'antd';
 import { onError } from 'apollo-link-error';
 import { useState } from 'react';
+import sentry from '~/integrations/sentry';
 
 function createClient() {
   const httpLink = new HttpLink({
@@ -18,7 +19,7 @@ function createClient() {
         const { message, code } = error;
         const errorMsg = `[GraphQL error]: Message: ${message} Code: ${code}`;
         console.error(errorMsg);
-        // sentry.captureException(new Error(errorMsg));
+        sentry.captureException(new Error(errorMsg));
       });
       // TODO: see if this UI error reporting scheme makes sense as we develop
       // Currently not handling Auth / User errors specially
@@ -28,7 +29,7 @@ function createClient() {
     // TODO: figure out what to do here
     if (networkError) {
       console.error('[Network error]:', networkError);
-      // sentry.captureException(networkError);
+      sentry.captureException(networkError);
     }
   });
 
