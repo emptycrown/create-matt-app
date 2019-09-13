@@ -2,6 +2,7 @@ import { ENV, PROD } from '#/lib/url';
 import { PORT, ROOT_URL } from '#/lib/url';
 import { authorizeApp } from '~/lib/auth';
 import { createServer } from 'http';
+import { initializeBot as initializeDiscordBot } from '~/integrations/discord';
 import { initializeGraphQL } from '~/graphql';
 import { wrapApp as wrapAppSentry } from '~/integrations/sentry';
 import bodyParser from 'body-parser';
@@ -46,6 +47,7 @@ function start() {
     );
     initializeGraphQL(app);
     serveIndexWithMetatags(app);
+    initializeDiscordBot();
   });
 
   const server = createServer(app);
