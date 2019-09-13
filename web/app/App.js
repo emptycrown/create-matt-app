@@ -2,10 +2,11 @@ import React from 'react';
 
 import '~/styles/style.css';
 import { ApolloProvider } from '@apollo/react-hooks';
+import { AuthRoute, useAuth } from '~/lib/auth';
 import { Route, Switch, withRouter } from 'react-router-dom';
-import { useAuth } from '~/lib/auth';
 import { useNewApolloClient } from '~/apollo/init';
 import LandingPage from './LandingPage';
+import LifePage from './LifePage';
 import NotFound from './NotFound';
 import SignupPage from './SignupPage';
 
@@ -26,7 +27,8 @@ function App() {
   return (
     <Switch>
       <Route exact path={'/'} component={LandingPage} />
-      <Route path={'/signup'} component={SignupPage} />
+      <AuthRoute requires="NO_USER" path={'/signup'} component={SignupPage} />
+      <AuthRoute path={'/life'} component={LifePage} />
       <Route component={NotFound} />
     </Switch>
   );
