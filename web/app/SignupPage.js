@@ -10,7 +10,13 @@ export default function SignupPage() {
 
   return (
     <div>
-      <div>Authed uid: {me?.id}</div>
+      {me ? (
+        <div>
+          {me?.name} ({me?.email})
+        </div>
+      ) : (
+        <div>not logged in</div>
+      )}
       <div>
         <button onClick={() => signupOrLogin('GOOGLE')}>
           Signup with Google
