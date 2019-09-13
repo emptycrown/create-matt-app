@@ -26,7 +26,7 @@ module.exports = function config(api) {
           },
           // Route to global root
           {
-            rootPathSuffix: __dirname,
+            rootPathSuffix: '../',
             rootPathPrefix: '#',
           },
         ],
