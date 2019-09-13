@@ -7,7 +7,11 @@ export default function LandingPage() {
     <div>
       <div className="text-red-500">Hello world!</div>
       <div>
-        Click <Link to="/signup">here</Link> to signup
+        <Link to="/signup">Click here to signup</Link> (works if not already
+        logged in)
+      </div>
+      <div>
+        <Link to="/life">Click here to play life</Link>
       </div>
     </div>
   );
