@@ -39,5 +39,17 @@ export default class Company extends Sequelize.Model {
       models.Company.findAll({
         where: { ceoId: uid },
       }),
+
+    createNew: async (uid, name, url = 'https://cresicor.com') => {
+      const [company] = await Promise.all([
+        models.Company.create({
+          name,
+          url,
+          ceoId: uid,
+        }),
+        models.User.increment({ clout: 1 }, { where: { id: uid } }),
+      ]);
+      return company;
+    },
   });
 }

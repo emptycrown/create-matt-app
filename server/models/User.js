@@ -19,6 +19,11 @@ export default class User extends Sequelize.Model {
       type: Sequelize.STRING,
       allowNull: false,
     },
+    clout: {
+      type: Sequelize.INTEGER,
+      defaultValue: 0,
+      allowNull: false,
+    },
   };
 
   static options = {
