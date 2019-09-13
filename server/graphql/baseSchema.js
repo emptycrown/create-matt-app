@@ -8,7 +8,6 @@ export const resolvers = {
   EmailAddress,
   JSON: GraphQLJSON,
   Node: {
-    // TODO: unclear if sketchy
     __resolveType: () => null,
   },
 };

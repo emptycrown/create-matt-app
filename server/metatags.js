@@ -7,10 +7,10 @@ const indexPath = path.join(__dirname, '..', 'web', 'dist', '_index.html');
 const readFileAsync = bluebird.promisify(fs.readFile);
 
 const DEFAULT = {
-  TITLE: 'TODO',
-  DESCRIPTION: 'TODO',
-  URL: 'TODO',
-  IMAGE: 'TODO',
+  TITLE: 'CMA-TODO',
+  DESCRIPTION: 'CMA-TODO',
+  URL: 'CMA-TODO',
+  IMAGE: 'CMA-TODO',
 };
 
 const METATAG_GENERATORS = {

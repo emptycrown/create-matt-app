@@ -36,7 +36,7 @@ export const LOGOUT = gql`
   }
 `;
 
-// TODO: add appropriate providers
+// CMA-TODO: add appropriate providers
 const PROVIDERS = {
   GOOGLE: () => new firebase.auth.GoogleAuthProvider(),
   FACEBOOK: () => new firebase.auth.FacebookAuthProvider(),
@@ -50,7 +50,7 @@ export function useAuth() {
 
 // https://firebase.google.com/docs/auth/web/facebook-login?#handling-account-exists-with-different-credential-errors
 // i.e. when I sign up with Google but already have Facebook linked
-// TODO: add appropriate providers
+// CMA-TODO: add appropriate providers
 const CREDENTIAL_METHOD_TO_SITE = {
   'google.com': 'Google',
   'facebook.com': 'Facebook',

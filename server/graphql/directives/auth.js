@@ -3,7 +3,6 @@ import { SchemaDirectiveVisitor } from 'graphql-tools';
 import { defaultFieldResolver } from 'graphql';
 
 // Adapted from https://blog.apollographql.com/reusable-graphql-schema-directives-131fb3a177d1
-// TODO: understand this more
 export default class AuthDirective extends SchemaDirectiveVisitor {
   visitObject(type) {
     this.ensureFieldsWrapped(type);
@@ -53,7 +52,6 @@ export default class AuthDirective extends SchemaDirectiveVisitor {
             break;
           }
           case 'ADMIN': {
-            // TODO
             throw new AuthError('Unauthorized');
           }
           default: {

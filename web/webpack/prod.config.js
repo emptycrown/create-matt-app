@@ -10,8 +10,5 @@ const baseConfig = require('./base.config.js');
 module.exports = merge(baseConfig, {
   devtool: 'source-map',
   mode: 'production',
-  plugins: [
-    // TODO: Sentry
-    new DotEnv({ path: path.join(root, 'prod.env') }),
-  ],
+  plugins: [new DotEnv({ path: path.join(root, 'prod.env') })],
 });

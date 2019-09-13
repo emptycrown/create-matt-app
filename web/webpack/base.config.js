@@ -92,7 +92,7 @@ module.exports = {
       templateParameters: {
         ...R.pick(
           [
-            /* TODO: add env vars to substitute in index.ejs */
+            /* CMA-TODO: add env vars to substitute in index.ejs */
           ],
           process.env
         ),
