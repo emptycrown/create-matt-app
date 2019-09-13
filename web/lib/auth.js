@@ -1,3 +1,6 @@
+import React from 'react';
+
+import { Redirect, Route } from 'react-router-dom';
 import { message } from 'antd';
 import { useEffect } from 'react';
 import { useMutation, useQuery } from '@apollo/react-hooks';
@@ -91,4 +94,37 @@ export function useLogout() {
     await firebase.auth().signOut();
     await logoutMutation({ refetchQueries: ['Me'], awaitRefetchQueries: true });
   };
+}
+
+function AuthRedirect({ component: Component, requires, ...rest }) {
+  const { me, loading } = useMe();
+  if (loading) return null;
+
+  switch (requires) {
+    // Requires viewer to be logged out.
+    case 'NO_USER': {
+      if (me) return <Redirect to={'/'} />;
+      break;
+    }
+    // Requires user to be logged in, otherwise will direct to /signup
+    case 'USER': {
+      if (!me) return <Redirect to="/signup" />;
+      break;
+    }
+    default:
+      throw new Error(`Unrecognized auth role ${requires}`);
+  }
+
+  return <Component {...rest} />;
+}
+
+export function AuthRoute({ component, requires = 'USER', ...routeProps }) {
+  return (
+    <Route
+      render={props => (
+        <AuthRedirect requires={requires} component={component} {...props} />
+      )}
+      {...routeProps}
+    />
+  );
 }
