@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "FORCE_COLOR=3 NODE_ENV=development SCRIPT=apiServer nodemon babelWrapper.js --config nodemon.json | bunyan -o short -L",
-    "prod": "./launch-prod.sh",
+    "prod": "sudo ./launch-prod.sh",
     "sync-schema-prod": "LOG_LEVEL=debug NODE_ENV=production SCRIPT=models/.sync node babelWrapper.js",
     "sync-schema-dev": "LOG_LEVEL=debug NODE_ENV=development SCRIPT=models/.sync node babelWrapper.js"
   },
