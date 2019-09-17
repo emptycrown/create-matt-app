@@ -20,6 +20,9 @@
       "git add"
     ]
   },
+  "scripts": {
+    "aws": "sudo ssh -i .ssh/[CMA-TODO].pem ubuntu@[CMA-TODO: replace with public ip]"
+  },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
     "eslint": "^6.3.0",

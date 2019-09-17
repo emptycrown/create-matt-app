@@ -1,5 +1,4 @@
 #!/bin/bash
-# Sample script to initialize an EC2 app
 set -e
 
 if [ $(id -u) != "0" ]
