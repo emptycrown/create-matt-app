@@ -2,7 +2,8 @@
   "name": "web",
   "version": "1.0.0",
   "scripts": {
-    "dev": "yarn webpack --config webpack/dev.config.js"
+    "dev": "webpack --config webpack/dev.config.js",
+    "build": "webpack --config=webpack/prod.config.js"
   },
   "dependencies": {
     "@apollo/react-hooks": "^3.1.0",
