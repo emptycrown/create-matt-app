@@ -1,3 +1,9 @@
+const reportSentry = e => {
+  sentry.captureException(e);
+  throw e;
+};
+process.on('unhandledRejection', reportSentry);
+
 import { ENV, PROD } from '#/lib/url';
 import { PORT, ROOT_URL } from '#/lib/url';
 import { authorizeApp } from '~/lib/auth';
@@ -12,6 +18,7 @@ import favicon from 'serve-favicon';
 import helmet from 'helmet';
 import path from 'path';
 import rateLimit from 'express-rate-limit';
+import sentry from '~/integrations/sentry';
 import serveIndexWithMetatags from './metatags';
 
 const rootPath = path.join(__dirname, '..');
