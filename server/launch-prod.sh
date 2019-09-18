@@ -3,8 +3,7 @@
 set -e
 
 # export NODE_ENV=production
-sudo yarn 
-sudo yarn workspace web build
+yarn 
+yarn workspace web build
 pwd
-cd server; 
 pm2 startOrGracefulReload ./ecosystem.config.js

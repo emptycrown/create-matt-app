@@ -21,7 +21,7 @@
     ]
   },
   "scripts": {
-    "aws": "sudo ssh -i .ssh/[CMA-TODO].pem ubuntu@[CMA-TODO: replace with public ip]"
+    "aws": "sudo ssh -i .ssh/cma-3.pem ubuntu@18.208.160.64"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",

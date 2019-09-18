@@ -7,25 +7,26 @@ then
     exit
 fi
 
-sudo apt-get update
-sudo apt-get install -y nginx
+apt-get update
+apt-get install -y nginx
 
-curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
-sudo apt-get install -y nodejs
+curl -sL https://deb.nodesource.com/setup_12.x | bash -
+apt-get install -y nodejs
 
 # Yarn install
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-sudo apt-get update && sudo apt-get install -y yarn
-
-# Then setup SSL via Let's Encrypt
-sudo apt-get update
-sudo apt-get install -y software-properties-common
-sudo add-apt-repository universe
-sudo add-apt-repository -y ppa:certbot/certbot
-sudo apt-get update
-sudo apt-get install -y certbot python-certbot-nginx
-# sudo certbot certonly --nginx
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+apt-get update && apt-get install -y yarn
 
 # Other dependencies
-npm install -g pm2
+yarn global add pm2 --prefix /usr/local
+# chown -R ubuntu ~/.config
+
+# Then setup SSL via Let's Encrypt
+apt-get update
+apt-get install -y software-properties-common
+add-apt-repository universe
+add-apt-repository -y ppa:certbot/certbot
+apt-get update
+apt-get install -y certbot python-certbot-nginx
+# certbot certonly --nginx
