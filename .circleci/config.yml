@@ -1,0 +1,16 @@
+version: 2
+jobs:
+  build:
+    branches:
+      only:
+        - master
+    working_directory: ~/CMA-TODO-PROJECTNAME
+    docker:
+      - image: circleci/node:10.8
+    steps:
+      - checkout
+      - deploy:
+          command: |
+            ssh -o "StrictHostKeyChecking no" $SSH_USER@$SSH_HOST "cd
+            ~/CMA-TODO-PROJECTNAME && git stash && git pull && yarn workspace
+            server start"
