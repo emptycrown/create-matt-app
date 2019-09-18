@@ -30,7 +30,7 @@ module.exports = {
         SCRIPT: 'masterServer',
         NODE_ENV: 'production',
       },
-      instances: 1,
+      instances: 0,
       ...defaultOptions,
     },
   ],

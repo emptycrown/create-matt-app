@@ -12,8 +12,6 @@ import NotFound from './NotFound';
 import SignupPage from './SignupPage';
 import theme from '~/styles/theme';
 
-// CMA-TODO: maybe add some sort of error boundary
-
 function _App() {
   const apolloClient = useNewApolloClient();
   useAuth();

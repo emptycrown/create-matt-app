@@ -21,6 +21,10 @@ apt-get update && apt-get install -y yarn
 # Other dependencies
 yarn global add pm2 --prefix /usr/local
 
+# Add NGINX conf.d file, remove symlink for sites-enabled
+rm /etc/nginx/sites-enabled/default
+cp default.conf /etc/nginx/conf.d
+
 # Then setup SSL via Let's Encrypt
 apt-get update
 apt-get install -y software-properties-common
@@ -30,6 +34,4 @@ apt-get update
 apt-get install -y certbot python-certbot-nginx
 certbot certonly --nginx
 
-# Add NGINX conf.d file, remove symlink for sites-enabled
-rm /etc/nginx/sites-enabled/default
-cp default.conf /etc/nginx/conf.d
+service nginx restart
