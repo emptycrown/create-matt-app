@@ -4,6 +4,7 @@ import '~/styles/style.css';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { AuthRoute, useAuth } from '~/lib/auth';
 import { Route, Switch, withRouter } from 'react-router-dom';
+import { StripeProvider } from '~/integrations/stripe';
 import { ThemeProvider } from 'styled-components';
 import { useNewApolloClient } from '~/apollo/init';
 import LandingPage from './LandingPage';
@@ -17,11 +18,13 @@ function _App() {
   useAuth();
 
   return (
-    <ApolloProvider client={apolloClient}>
-      <ThemeProvider theme={theme}>
-        <App />
-      </ThemeProvider>
-    </ApolloProvider>
+    <StripeProvider>
+      <ApolloProvider client={apolloClient}>
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
+      </ApolloProvider>
+    </StripeProvider>
   );
 }
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
   Button,
@@ -7,9 +7,14 @@ import {
   Header,
   Helix,
   IconCircle,
+  Modal,
   Text,
 } from '~/components';
 import { Col, Row } from 'antd';
+import {
+  StripeEnterOrSelectCard,
+  StripePaymentProvider,
+} from '~/integrations/stripe';
 import { colors } from '~/styles/theme';
 
 const DIRECTIONS = [
@@ -32,6 +37,8 @@ const DIRECTIONS = [
 ];
 
 export default function LandingPage() {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <div>
       <Header />
@@ -40,9 +47,21 @@ export default function LandingPage() {
           <Text.Heading className="m-0">Landing page</Text.Heading>
           <Text.SubHeading>What your company is about</Text.SubHeading>
         </div>
-        <Button large colorScheme={colors.deepBlue} style={{ width: 250 }}>
+        <Button
+          large
+          colorScheme={colors.deepBlue}
+          style={{ width: 250 }}
+          onClick={() => setShowModal(true)}
+        >
           Pre-register
         </Button>
+        <Modal visible={showModal} onCancel={() => setShowModal(false)}>
+          <div className="p-8">
+            <StripePaymentProvider>
+              <StripeEnterOrSelectCard />
+            </StripePaymentProvider>
+          </div>
+        </Modal>
       </div>
       <div className="bg-dark">
         <div

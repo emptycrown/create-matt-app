@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 
 import { Link } from 'react-router-dom';
 import { Text } from '~/components';
-import { logout, useMe } from '~/lib/auth';
+import { useLogout, useMe } from '~/lib/auth';
 import BrandName from './BrandName';
 
 function HeaderAuth() {
   const { me, loading } = useMe();
   const [expanded, setExpanded] = useState(false);
+  const logout = useLogout();
   if (loading) return null;
 
   if (me)
