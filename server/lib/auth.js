@@ -2,6 +2,7 @@ import connectSequelize from 'connect-session-sequelize';
 import firebase from '~/integrations/firebase';
 import models from '~/models';
 import session from 'express-session';
+import stripe from '~/integrations/stripe';
 const SequelizeStore = connectSequelize(session.Store);
 
 // https://www.npmjs.com/package/express-session
@@ -32,15 +33,29 @@ export function authorizeApp(app) {
   });
 }
 
+async function createStripeCustomerForUser(uid) {
+  const user = await models.User.findByPk(uid);
+  if (user.stripeCustomerId) return user;
+  const { id } = await stripe.customers.create({
+    email: user.email,
+    description: uid,
+  });
+  return await user.update({ stripeCustomerId: id });
+}
+
 export async function login(req, token) {
   const { uid, email, name } = await firebase.auth().verifyIdToken(token);
 
   // Currently, you can "login" as a brand new user. In this case, we need to
   // "signup" the user -- i.e. create the user object
-  const [user] = await models.User.findOrCreate({
+  const [user, newUser] = await models.User.findOrCreate({
     where: { id: uid },
     defaults: { name, email },
   });
+
+  if (newUser) {
+    createStripeCustomerForUser(uid);
+  }
 
   loginSession(req, user.id);
   return user;
