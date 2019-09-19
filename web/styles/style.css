@@ -5,3 +5,323 @@ This CSS resource incorporates links to font software which is the valuable copy
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'rubik';
+  src: url('./rubik-regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: 'rubik';
+  src: url('./rubik-italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: 'rubik';
+  src: url('./rubik-medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: 'montbold';
+  src: url('./montbold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'proxima-nova';
+  src: url('./proxima-nova.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: 'proxima-nova';
+  src: url('./proxima-nova-bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: fallback;
+}
+
+/* Pervasive styles for basic components */
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: 'proxima-nova';
+  font-size: 16px;
+}
+
+h2 {
+  font-family: 'montbold';
+  font-size: 20px;
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+
+input:focus {
+  outline: none;
+}
+
+button:focus {
+  outline: none;
+}
+
+video:focus {
+  outline: none;
+}
+
+img {
+  display: inline-block
+}
+/* END Pervasive styles */
+
+
+.resp-container-wrapper-card {
+  box-sizing: content-box;
+  max-width: 1300px;
+  margin-right: auto;
+  margin-left: auto;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 16px 64px 0 rgba(0,0,0,0.25);
+  border-radius: 16px;
+}
+
+.resp-container {
+  box-sizing: content-box;
+  max-width: 1100px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+  position: relative;
+}
+
+.resp-container-wide {
+  box-sizing: content-box;
+  max-width: 1337px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 32px;
+  padding-left: 32px;
+  position: relative;
+}
+
+/* TODO: Hacky way to cover all icons */
+.overflow-hidden .anticon svg, .resp-container .anticon svg, .ant-modal-body .anticon svg, .ant-message .anticon svg {
+    display: block;
+}
+
+.center-contents {
+  position: relative;
+}
+
+.center-contents > * {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.absolute-centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.title {
+  font-family: 'montbold';
+}
+
+.caption {
+  font-family: 'rubik', 'Arial';
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.spectrum-background {
+  background: linear-gradient(red 10%, transparent),
+    linear-gradient(to top left, lime 10%, transparent),
+    linear-gradient(to top right, blue 10%, transparent);
+  background-blend-mode: screen;
+}
+
+.rainbow-background {
+  background: linear-gradient(to bottom right, #fcd558 15%, transparent 65%),
+    linear-gradient(to bottom left, #fb8574 25%, transparent 65%),
+    linear-gradient(to left, #ee58ee 20%, transparent 75%),
+    /* linear-gradient(to top, #8396F1 15%, transparent 65%), */
+      linear-gradient(to top, #2bd6e2 25%, transparent 75%),
+    linear-gradient(to right, #5af212 30%, transparent 75%);
+}
+
+.rainbow-background-pale {
+  background: linear-gradient(to bottom right, #fcd558 -85%, transparent 65%),
+    linear-gradient(to bottom left, #fb8574 -75%, transparent 65%),
+    linear-gradient(to left, #ee58ee -80%, transparent 75%),
+    /* linear-gradient(to top, #8396F1 15%, transparent 65%), */
+      linear-gradient(to top, #2bd6e2 -75%, transparent 75%),
+    linear-gradient(to right, #5af212 -70%, transparent 75%);
+}
+
+.rainbow-gradient {
+    background-image: linear-gradient(to right, #fcd558 0%, #fb8574 20%, #ee58ee 40%, #8396F1 60%, #2bd6e2 80%, #5af212 100%);
+    background-attachment: fixed;
+    background-position: top center;
+  }
+
+.gradient-text {
+  background: -webkit-linear-gradient(135deg, #ee58ee, #fcd558);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dots-background {
+  background-image: radial-gradient(hsla(209, 100%, 47%, 1) 7%, transparent 0);
+  background-size: 26px 26px;
+}
+
+.dots-background.light {
+  background-image: radial-gradient(hsla(0, 0%, 100%, 1) 7%, transparent 0);
+  background-size: 26px 26px;
+}
+
+.expanding-img {
+  height: 85px;
+  width: 85px;
+  transition: all 0.4s;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+.expanding-img:hover {
+  height: 125px;
+  width: 125px;
+  -webkit-filter: none;
+  filter: none;
+}
+
+.bg-image {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+
+.triangle-bottom::after {
+  content: '';
+  display: block;
+  padding-bottom: 3%;
+  background-image: url('/static/graphics/triangle-edge.svg');
+  width: 110%;
+  margin-left: -5%;
+  margin-top: -5%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+  position: relative;
+  border-bottom: solid 3rem white;
+  z-index: 9;
+}
+
+/* Fancy button */
+
+.draw-border {
+    box-shadow: inset 0 0 0 3px #00102a;
+    color: #00102a;
+    transition: color 0.25s 0.0833333333s;
+    position: relative;
+}
+
+.draw-border.light {
+    box-shadow: inset 0 0 0 3px #fff;
+    color: #fff;
+}
+
+.draw-border::before, .draw-border::after {
+    border: 0 solid transparent;
+    box-sizing: border-box;
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    width: 0;
+    height: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.draw-border::before {
+  border-bottom-width: 4px;
+  border-left-width: 4px;
+}
+
+.draw-border::after {
+  border-top-width: 4px;
+  border-right-width: 4px;
+}
+
+.draw-border:hover {
+  color: #5a2eff;
+}
+
+.draw-border:hover::before,
+.draw-border:hover::after {
+  border-color: #5a2eff;
+  transition: border-color 0s, width 0.25s, height 0.25s;
+  width: 100%;
+  height: 100%;
+}
+
+.draw-border:hover::before {
+  transition-delay: 0s, 0s, 0.25s;
+}
+
+.draw-border:hover::after {
+  transition-delay: 0s, 0.25s, 0s;
+}
+
+.btn {
+  font-family: 'montbold';
+  background: none;
+  border: none;
+  cursor: pointer;
+  line-height: 1.5;
+  padding: 1em 2em;
+  letter-spacing: 0.05rem;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+/* END Fancy button */
+
+.ant-tooltip-content .ant-tooltip-arrow {
+  display: none;
+}
+
+.ant-popover-content .ant-popover-arrow {
+  display: none;
+}
+
+.ant-popover-content .ant-popover-inner-content {
+  padding: 0;
+}
+
+.flex .ant-slider {
+  margin: 10px 6px;
+}
+

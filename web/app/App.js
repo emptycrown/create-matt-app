@@ -4,11 +4,13 @@ import '~/styles/style.css';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { AuthRoute, useAuth } from '~/lib/auth';
 import { Route, Switch, withRouter } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
 import { useNewApolloClient } from '~/apollo/init';
 import LandingPage from './LandingPage';
 import LifePage from './LifePage';
 import NotFound from './NotFound';
 import SignupPage from './SignupPage';
+import theme from '~/styles/theme';
 
 // CMA-TODO: maybe add some sort of error boundary
 
@@ -18,7 +20,9 @@ function _App() {
 
   return (
     <ApolloProvider client={apolloClient}>
-      <App />
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
     </ApolloProvider>
   );
 }

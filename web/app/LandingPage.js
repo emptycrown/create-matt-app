@@ -1,18 +1,15 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom';
+import { Footer, Header, Text } from '~/components';
 
 export default function LandingPage() {
   return (
-    <div>
-      <div className="text-red-500">Hello world!</div>
-      <div>
-        <Link to="/signup">Click here to signup</Link> (works if not already
-        logged in)
+    <div className="h-screen w-full flex flex-col justify-between">
+      <Header />
+      <div className="flex flex-col items-center">
+        <Text.Heading>Landing page</Text.Heading>
       </div>
-      <div>
-        <Link to="/life">Click here to play life</Link>
-      </div>
+      <Footer />
     </div>
   );
 }
