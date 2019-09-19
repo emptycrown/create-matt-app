@@ -15,6 +15,7 @@ import {
   StripeEnterOrSelectCard,
   StripePaymentProvider,
 } from '~/integrations/stripe';
+import { StripeSubmitButton } from '~/lib/payments';
 import { colors } from '~/styles/theme';
 
 const DIRECTIONS = [
@@ -59,6 +60,7 @@ export default function LandingPage() {
           <div className="p-8">
             <StripePaymentProvider>
               <StripeEnterOrSelectCard />
+              <StripeSubmitButton>Submit</StripeSubmitButton>
             </StripePaymentProvider>
           </div>
         </Modal>
