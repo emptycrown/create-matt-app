@@ -35,9 +35,9 @@ const Heading = styled.h2.attrs(props => ({
 
 // LEVEL 3 HEADINGS: For subsections
 const SubHeading = styled.h3.attrs(props => ({
-  className: 'text-lg',
+  className: 'text-2xl',
 }))`
-  font-family: 'montbold';
+  font-family: 'proxima-nova';
 `;
 
 // LEVEL 4 HEADINGS: For captioning chunks of text
