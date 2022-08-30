@@ -51,7 +51,7 @@
     "graphql": "^14.5.4",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
-    "moment-timezone": "^0.5.26",
+    "moment-timezone": "^0.5.35",
     "ramda": "^0.26.1"
   }
 }
